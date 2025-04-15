@@ -49,7 +49,7 @@ const line_items = items.map((item: CartItem) => ({
 price_data: {
 
   currency: "cad",
-product_data: (name: item.name),
+product_data: {name: item.name},
 unit_amount: item .price,
 
 },
