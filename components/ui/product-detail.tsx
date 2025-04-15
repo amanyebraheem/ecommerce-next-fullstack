@@ -73,7 +73,6 @@
 //   );
 // };
 
-
 'use client';
 
 import Image from "next/image";
@@ -104,8 +103,8 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
     addItem({
       id: product.id,
       name: product.name,
-      price: price.unit_amount ?? 0, // ✅ تأكد أن السعر دائماً رقم
-      imageUrl: product.images?.[0] ?? '', // ✅ تأكد أن الرابط دائماً string
+      price: price.unit_amount ?? 0,
+      imageUrl: product.images?.[0] ?? '', // ✅ لازم يكون string دايمًا
       quantity: 1,
     });
   };
@@ -115,8 +114,8 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
       {product.images && product.images[0] && (
         <div className="relative w-full h-80 md:w-1/2 rounded-lg overflow-hidden">
           <Image
-            src={product.images[0]}
-            alt={product.name}
+            src={product.images[0] || '/placeholder.png'} // ✅ لازم string
+            alt={product.name || 'Product image'}         // ✅ لازم string
             fill
             className="transition duration-300 hover:opacity-90 object-cover"
           />
