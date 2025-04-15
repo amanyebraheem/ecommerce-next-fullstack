@@ -104,8 +104,8 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
     addItem({
       id: product.id,
       name: product.name,
-      price: price.unit_amount as number,
-      imageUrl: product.images?.[0] ?? '', // ✅ Fix: always a string
+      price: price.unit_amount ?? 0, // ✅ تأكد أن السعر دائماً رقم
+      imageUrl: product.images?.[0] ?? '', // ✅ تأكد أن الرابط دائماً string
       quantity: 1,
     });
   };
@@ -118,19 +118,25 @@ export const ProductDetail = ({ product }: ProductDetailProps) => {
             src={product.images[0]}
             alt={product.name}
             fill
-            className="transition duration-300 hover:opacity-90"
+            className="transition duration-300 hover:opacity-90 object-cover"
           />
         </div>
       )}
 
       <div className="md:w-1/2">
         <h1 className="text-3xl font-bold mb-5">{product.name}</h1>
-        {product.description && <p>{product.description}</p>}
-        {price?.unit_amount && (
+
+        {product.description && (
+          <p className="mb-4 text-gray-700">{product.description}</p>
+        )}
+
+        {price?.unit_amount !== null && (
           <p className="text-xl text-black mb-4">
-            ${(price.unit_amount / 100).toFixed(2)}
+            ${(price.unit_amount / 100).toFixed(2)}{" "}
+            <span className="uppercase">{price.currency}</span>
           </p>
         )}
+
         <div className="flex items-center space-x-4">
           <Button variant="outline" onClick={() => removeItem(product.id)}>-</Button>
           <span className="text-lg font-semibold">{quantity}</span>
