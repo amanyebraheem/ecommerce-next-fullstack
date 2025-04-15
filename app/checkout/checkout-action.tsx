@@ -40,9 +40,9 @@ import { stripe } from "@/lib/stripe";
 import { CartItem } from "@/store/cart-store";
 import { redirect } from "next/navigation";
 
-export const checkoutAction = async (formData: FormData): Promise<void> => {
+export const checkoutAction = async (FormData: FormData): Promise<void> => {
 
-const itemsJson = formData.get("items") as string 
+const itemsJson = FormData.get("items") as string 
 const items = JSON.parse(itemsJson)
 const line_items = items.map((item: CartItem) => ({
 
