@@ -1,5 +1,4 @@
 "use client"
-
 import Link from "next/link";
 import Stripe from "stripe";
 import { Card, CardContent, CardHeader, CardTitle } from "./card";
@@ -30,24 +29,14 @@ export const ProductCard = ({ product }: Props) => {
         <CardHeader>
           <CardTitle>{product.name}</CardTitle>
         </CardHeader>
-
-
-
 <CardContent>
 {
-
 product.description && (
     <p className="text-gray-600 text-sm mb-2">
         {product.description}</p>
-)
-
-}
-
+)}
 
 </CardContent>
-
-
-
         <CardContent>
           {price?.unit_amount && (
             <p className="text-xl text-black">

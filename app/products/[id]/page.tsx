@@ -1,6 +1,6 @@
 
 
-import { ProductDetail } from "@/components/ui/product-detail";
+import { ProductDetail } from "@/components/product-detail";
 import { stripe } from "@/lib/stripe";
 
 
@@ -21,4 +21,6 @@ export default async function ProductsPage({
 const plainProduct = JSON.parse(JSON.stringify(product));
   return <ProductDetail product={plainProduct} />;
 }
+
+
 
